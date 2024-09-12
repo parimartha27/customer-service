@@ -1,11 +1,8 @@
 package com.training.customer.controller;
 
-import com.training.customer.dto.ApiResponse;
-import com.training.customer.dto.CreateCustomerRequest;
-import com.training.customer.dto.UpdateCustomerRequest;
+import com.training.customer.dto.*;
 import com.training.customer.service.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,29 +14,34 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping()
-    public ResponseEntity<ApiResponse> getAllCustomer(){
-        return new ResponseEntity<>(customerService.getAllCustomer(), HttpStatus.OK);
+    public ResponseEntity<Object> getAllCustomer(){
+        return customerService.getAllCustomer();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse> getCustomerById(@PathVariable Long id){
-        return new ResponseEntity<>(customerService.getCustomerById(id), HttpStatus.OK);
+    public ResponseEntity<Object> getCustomerById(@PathVariable Long id){
+        return customerService.getCustomerById(id);
     }
 
     @PostMapping()
-    public ResponseEntity<ApiResponse> addCustomer(@RequestBody CreateCustomerRequest request){
-        return new ResponseEntity<>(customerService.createCustomerData(request), HttpStatus.CREATED);
+    public ResponseEntity<Object> addCustomer(@RequestBody CreateCustomerRequest request){
+        return customerService.createCustomerData(request);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deleteCustomer(@PathVariable Long id){
-        return new ResponseEntity<>(customerService.deleteCustomer(id), HttpStatus.OK);
+    public ResponseEntity<Object> deleteCustomer(@PathVariable Long id){
+        return customerService.deleteCustomer(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse> updateCustomer(@PathVariable Long id, @RequestBody UpdateCustomerRequest request){
-        return new ResponseEntity<>(customerService.updateCustomerData(id, request), HttpStatus.OK);
+    public ResponseEntity<Object> updateCustomer(@PathVariable Long id, @RequestBody UpdateCustomerRequest request){
+        return customerService.updateCustomerData(id, request);
 
+    }
+
+    @PostMapping("/update-balance")
+    public ResponseEntity<Object> updateBalance(@RequestBody UpdateBalanceRequest request){
+        return customerService.updateBalance(request);
     }
 
 }

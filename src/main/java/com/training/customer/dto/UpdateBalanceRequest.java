@@ -12,10 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class CreateCustomerRequest {
-    private String name;
+public class UpdateBalanceRequest {
     private String email;
-    private String phoneNumber;
-    private String accountNumber;
-    private Double balance;
+    private Double totalPrice;
 }
+
+

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class CustomerEntity {
     private Long id;
 
     @NotBlank(message = "Name can't be null, empty or blank")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
 
     @Email(message = "Email not valid")
@@ -36,7 +38,12 @@ public class CustomerEntity {
     @NotBlank(message = "Phone Number can't be null, empty or blank")
     private String phoneNumber;
 
-    private String address;
+    @NotBlank(message = "Account Number can't be null, empty or blank")
+    @Size(min = 10, max = 10, message = "Account number must 10 digits")
+    private String accountNumber;
+
+    @Min(value = 1, message="Amount must be greater than 0")
+    private Double balance;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
