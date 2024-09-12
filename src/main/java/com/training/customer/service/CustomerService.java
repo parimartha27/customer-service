@@ -1,5 +1,6 @@
 package com.training.customer.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.training.customer.constant.Constant;
 import com.training.customer.dto.*;
 import com.training.customer.entity.CustomerEntity;
@@ -112,7 +113,9 @@ public class CustomerService {
         customer.setBalance(updatedBalance);
         saveCustomerData(customer);
 
-        return createResponse(Constant.SUCCESS, "Success update balance", null, HttpStatus.OK);
+        CustomerResponse response = mappingCustomerData(customer);
+
+        return createResponse(Constant.SUCCESS, "Success update balance", response, HttpStatus.OK);
     }
 
     private CustomerEntity findCustomerById(Long id){

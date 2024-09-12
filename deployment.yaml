@@ -34,7 +34,7 @@ spec:
   type: NodePort
   ports:
     - port: 5002
-      nodePort: 30007
+      nodePort: 30009
   selector:
     app: customer-service
 
