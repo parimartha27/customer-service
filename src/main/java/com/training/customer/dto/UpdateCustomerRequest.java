@@ -18,5 +18,5 @@ public class UpdateCustomerRequest {
     private String email;
     private String phoneNumber;
     private String accountNumber;
-    private Double amount;
+    private Double balance;
 }

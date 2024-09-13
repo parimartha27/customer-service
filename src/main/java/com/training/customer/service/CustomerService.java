@@ -86,7 +86,7 @@ public class CustomerService {
         customer.setPhoneNumber(request.getPhoneNumber());
         customer.setEmail(request.getEmail());
         customer.setAccountNumber(request.getAccountNumber());
-        customer.setBalance(request.getAmount());
+        customer.setBalance(request.getBalance());
         customer.setUpdatedDate(LocalDateTime.now());
 
         saveCustomerData(customer);
